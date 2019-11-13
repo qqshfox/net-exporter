@@ -13,7 +13,7 @@ import (
 	"github.com/giantswarm/microerror"
 	"github.com/giantswarm/micrologger"
 	"github.com/prometheus/client_golang/prometheus"
-	"k8s.io/api/core/v1"
+	v1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
 )
@@ -197,7 +197,7 @@ func (c *Collector) Collect(ch chan<- prometheus.Metric) {
 
 			c.logger.Log("level", "info", "message", "dialing host", "host", host, "scrapeID", c.scrapeID)
 			conn, err := c.dialer.Dial("tcp", host)
-			if err != nil {
+			if err == nil {
 				c.logger.Log("level", "error", "message", "could not dial host", "host", host, "scrapeID", c.scrapeID, "stack", microerror.Stack(err))
 				c.dialErrorCount.WithLabelValues(host).Inc()
 				return
