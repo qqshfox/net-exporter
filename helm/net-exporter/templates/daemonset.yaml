@@ -49,6 +49,9 @@ spec:
         args:
         - "-namespace={{ .Values.exporter.namespace }}"
         - "-timeout={{ .Values.timeout }}"
+        {{- range $key, $value := .Values.exporter.extraArgs }}
+        - "-{{ $key }}={{ $value }}"
+        {{- end }}
         livenessProbe:
           httpGet:
             path: /healthz

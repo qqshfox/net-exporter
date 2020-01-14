@@ -40,10 +40,12 @@ spec:
         {{ else }}
         image: "{{ .Values.image.registry }}/{{ .Values.image.name }}:{{ .Values.image.tag }}"
         {{ end }}
-
         args:
         - "-namespace={{ .Values.namespace }}"
         - "-timeout={{ .Values.timeout }}"
+        {{- range $key, $value := .Values.extraArgs }}
+        - "-{{ $key }}={{ $value }}"
+        {{- end }}
         livenessProbe:
           httpGet:
             path: /healthz
