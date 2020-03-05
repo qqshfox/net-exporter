@@ -46,10 +46,10 @@ spec:
         {{ else }}
         image: "{{ .Values.image.registry }}/{{ .Values.image.name }}:{{ .Values.image.tag }}"
         {{ end }}
-
         args:
         - "-namespace={{ .Values.namespace }}"
         - "-timeout={{ .Values.timeout }}"
+        - "-hosts={{ .Values.NetExporter.Hosts }}"
         {{ if (.Values.Installation) }}
         - "-disable-dns-tcp-check={{ .Values.Installation.V1.Monitoring.NetExporter.DNSCheck.TCP.Disabled }}"
         {{ end }}
