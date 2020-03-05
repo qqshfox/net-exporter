@@ -10,6 +10,7 @@ port: 8000
 dns:
   port: 1053
   label: coredns
+  service: coredns
 
 timeout: 5s
 

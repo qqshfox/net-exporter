@@ -7,6 +7,10 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
 ## [Unreleased]
 
+### Changed
+
+- Allow to customize dns service.
+
 ## [1.6.0] 2020-01-29
 
 ### Changed

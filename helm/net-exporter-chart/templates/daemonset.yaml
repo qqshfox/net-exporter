@@ -50,6 +50,7 @@ spec:
         - "-namespace={{ .Values.namespace }}"
         - "-timeout={{ .Values.timeout }}"
         - "-hosts={{ .Values.NetExporter.Hosts }}"
+        - "-dns-service={{ .Values.dns.service }}"
         {{ if (.Values.Installation) }}
         - "-disable-dns-tcp-check={{ .Values.Installation.V1.Monitoring.NetExporter.DNSCheck.TCP.Disabled }}"
         {{ end }}

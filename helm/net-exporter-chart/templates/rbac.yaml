@@ -13,7 +13,7 @@ rules:
   - endpoints
   resourceNames:
   - net-exporter
-  - coredns
+  - {{ .Values.dns.service }}
   verbs:
   - get
 - apiGroups:
